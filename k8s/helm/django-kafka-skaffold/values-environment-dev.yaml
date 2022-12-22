@@ -1,0 +1,14 @@
+
+kafka:
+  enabled: true
+  externalAccess:
+    enabled: true
+    service:
+      loadBalancerIPs:
+        - localhost
+  provisioning:
+    enabled: true
+    replicationFactor: 1
+    numPartitions: 2
+    topics:
+      - name: test-topic-1

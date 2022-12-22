@@ -1,0 +1,25 @@
+apiVersion: skaffold/v2beta26
+kind: Config
+profiles:
+  - name: dev
+    activation:
+      - command: dev
+    build:
+      artifacts:
+        - image: django
+          docker:
+            dockerfile: django.Dockerfile
+      local:
+        useBuildkit: true
+    deploy:
+      helm:
+        releases:
+          - name: django
+            chartPath: k8s/helm/django-kafka-skaffold
+            valuesFiles:
+              - k8s/helm/django-kafka-skaffold/values.yaml
+              - k8s/helm/django-kafka-skaffold/values-environment-dev.yaml
+            artifactOverrides:
+              image.name: django
+            namespace: default
+      kubeContext: docker-desktop

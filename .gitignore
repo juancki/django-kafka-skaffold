@@ -1,0 +1,2 @@
+# Helm charts
+k8s/helm/django-kafka-skaffold/charts/*
