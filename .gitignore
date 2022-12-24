@@ -1,2 +1,14 @@
 # Helm charts
 k8s/helm/django-kafka-skaffold/charts/*
+
+# Idea
+.idea
+
+#Python
+
+*.log
+*.pot
+*.pyc
+**/__pycache__
+db.sqlite3
+media
