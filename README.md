@@ -9,7 +9,7 @@ Details:
 
 
 ### Run
-You can run the examplec:
+
 - `skaffold run -p dev` to launch the deployment and start the kafka cluster.
 ```
 Waiting for deployments to stabilize...
@@ -22,9 +22,15 @@ You can also run [skaffold run --tail] to get the logs
 - Port forward `kubectl port-forward svc/django-svc 8000:8000`
 
 
+### Run without skaffold
+```bash
+pipenv shell
+python manage.py runserver 0.0.0.0:8000
+```
+
 ### Check the integration
 1. Open an terminal and run kafkacat `kcat` against localhost:9094.
-```
+```sh
 kcat -b localhost:9094 -C -t people  -J
 ```
 2. Open a second terminal and POST message with cURL:
