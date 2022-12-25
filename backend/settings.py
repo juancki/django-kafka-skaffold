@@ -132,13 +132,20 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 10
 }
 
+def envVarOrDefault(envVarName: str, default: str)-> str:
+    import os
+    envVar = os.getenv(envVarName)
+    if envVar == None:
+        return default
+    return envVar
+
 LOGPIPE = {
     # Required Settings
     'OFFSET_BACKEND': 'logpipe.backend.kafka.ModelOffsetStore',
     'CONSUMER_BACKEND': 'logpipe.backend.kafka.Consumer',
     'PRODUCER_BACKEND': 'logpipe.backend.kafka.Producer',
     'KAFKA_BOOTSTRAP_SERVERS': [
-        'localhost:9094'
+        envVarOrDefault("KAFKA_BOOTSTRAP_SERVERS",'localhost:9094')
     ],
     'KAFKA_CONSUMER_KWARGS': {
         'group_id': 'django-logpipe',

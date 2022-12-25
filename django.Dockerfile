@@ -7,6 +7,7 @@ RUN pip install pipenv && pipenv install --dev --system --deploy
 WORKDIR /home/app
 
 COPY backend/ backend/
+COPY app/ app/
 COPY db.sqlite3 . 
 COPY manage.py .
 

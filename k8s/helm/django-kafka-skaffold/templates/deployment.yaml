@@ -19,6 +19,9 @@ spec:
         image: {{ .Values.image.name }}
         ports:
         - containerPort: 8000
+        env:
+        - name: KAFKA_BOOTSTRAP_SERVERS
+          value: backend-kafka:9092
         resources:
           requests:
             memory: 1.5Gi

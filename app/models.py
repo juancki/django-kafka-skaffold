@@ -52,7 +52,6 @@ class PersonSerializer(serializers.ModelSerializer):
         # - validated_data is incoming data
         self.assertProducer()
         self.PersonProducer.send(validated_data)
-        self.PersonProducer.send()
         return super().update(instance, validated_data)
 
     @classmethod
